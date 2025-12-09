@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Diese Route wird vom Frontend bei Erfolg aufgerufen
 app.get("/go", (req, res) => {
     // Ziel-URL NUR hier im Backend
-    res.redirect("https://hackit-fpko.onrender.com/");
+    res.redirect("https://hackit4.onrender.com");
 });
 
 // Fallback: alle anderen GET-Requests bekommen index.html
