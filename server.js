@@ -1,18 +1,32 @@
-import express from "express";
+const express = require("express");
+const path = require("path");
+
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-const SECRET_PASSWORD = "superGeheimesPasswort";
-
+// Body-Parser für JSON
 app.use(express.json());
-app.use(express.static("public"));
+
+// Static-Files aus /public ausliefern
+app.use(express.static(path.join(__dirname, "public")));
+
+// Beispiel: Passwortcheck (falls du sowas drin hast)
+const SECRET_PASSWORD = "x9@N7p!zQ3";
 
 app.post("/check-password", (req, res) => {
     const { password } = req.body;
+
     if (password === SECRET_PASSWORD) {
         return res.json({ ok: true });
     }
     return res.json({ ok: false });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Server läuft auf Port", PORT));
+// Fallback: jede unbekannte GET-Route -> index.html
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.listen(PORT, () => {
+    console.log("Server läuft auf Port", PORT);
+});
