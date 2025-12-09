@@ -2,26 +2,26 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Level X</title>
+    <title>Level A</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="card">
-    <h1>Level A</h1>
+    <h1>Level X</h1>
     <p>Bitte gib das geheime Passwort ein, um fortzufahren.</p>
 
-    <form id="password-form">
-        <input type="password" id="password-input" placeholder="Passwort" autocomplete="off" required>
+    <form action="/level-a/check" method="post">
+        <label>
+            <input type="password" name="password" placeholder="Password" required>
+        </label>
         <button type="submit">Bestätigen</button>
     </form>
 
-    <p id="message"></p>
-
     <p class="hint">
-        Tipp: Manchmal muss man tiefer in die Entwicklertools schauen als nur in den Quelltext…
+        Tipp: Manchmal reicht ein Blick in den Quelltext nicht aus… 😉
     </p>
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
